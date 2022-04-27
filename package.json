@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "rm -rf dist && vue-tsc --noEmit && vite build",
+    "format:fix": "prettier --write \"{**/*,*}.{ts,js,vue,json,css}\"",
+    "format:check": "prettier --check \"{**/*,*}.{ts,js,vue,json,css}\"",
+    "lint:fix": "eslint --fix \"**/*.{ts,js,vue}\"",
+    "lint:check": "eslint \"**/*.{ts,js,vue}\"",
     "preview": "vite preview"
   },
   "author": "meow0516",
@@ -19,10 +23,16 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "husky": "^7.0.0",
     "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.14.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.5.4",
     "vite": "^2.9.5",
+    "vue-eslint-parser": "^8.3.0",
     "vue-tsc": "^0.34.7"
   }
 }
