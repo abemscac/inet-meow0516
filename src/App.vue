@@ -1,11 +1,20 @@
 <template>
-  <NavBar />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <Sidebar v-if="store.state.sidebarModule.sidebarVisible" />
+  <div :class="store.state.sidebarModule.sidebarVisible ? 'bg-slate-200' : ''">
+    <NavBar />
+    <main @click="closeSidebar" class="w-full h-screen">this is content</main>
+  </div>
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
 import NavBar from './components/common-components/NavBar.vue';
+import Sidebar from './components/common-components/Sidebar.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const closeSidebar = () => {
+  store.dispatch('sidebarModule/close');
+};
 </script>
 
 <style>

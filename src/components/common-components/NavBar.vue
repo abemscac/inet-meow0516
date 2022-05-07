@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-between px-16 py-3">
+  <nav class="flex justify-between px-16 py-3 sm:px-7">
     <button
       class="sm:flex sm:flex-col sm:justify-center hidden"
       @click="showSidebar"
@@ -24,7 +24,7 @@
     <img src="../../assets/logo.svg" alt="inet" class="sm:hidden" />
 
     <div class="flex sm:w-3/5 w-1/3 rounded border border-primary-200 px-2">
-      <input class="w-11/12" type="text" placeholder="搜尋INET" />
+      <input class="w-11/12 h-10 py-px" type="text" placeholder="搜尋INET" />
       <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
 
     <div class="sm:flex hidden">
       <div v-if="!isLogin">
-        <button @click="showDropdownMenu">
+        <button class="h-10" @click="showDropdownMenu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 inline-block mx-2 text-primary-500"
@@ -63,7 +63,7 @@
         </button>
         <div
           v-show="menuVisible"
-          class="z-10 absolute px-2 py-2 overlayMenu border border-primary-100 bg-white"
+          class="z-10 absolute right-2.5 px-2 py-2 overlayMenu border border-primary-100 bg-white"
           ref="overlayMenu"
         >
           <ul class="flex flex-col items-start">
@@ -108,7 +108,7 @@
           </ul>
         </div>
       </div>
-      <div v-else>
+      <div class="flex" v-else>
         <button @click="showDropdownMenu">
           <img
             src="../../assets/default-avatar 1.png"
@@ -378,6 +378,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const isLogin = ref(false);
 
@@ -393,12 +396,14 @@ const logout = () => {
 
 const menuVisible = ref(false);
 const showDropdownMenu = (e: Event) => {
-  menuVisible.value = !menuVisible.value;
+  if (!store.state.sidebarModule.sidebarVisible) {
+    menuVisible.value = !menuVisible.value;
+  }
+  return;
 };
 
-const sidebarVisible = ref(false);
 const showSidebar = () => {
-  sidebarVisible.value = !sidebarVisible.value;
+  store.dispatch('sidebarModule/toggle');
 };
 </script>
 
