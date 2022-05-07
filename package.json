@@ -18,7 +18,9 @@
   "author": "meow0516",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.15",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
