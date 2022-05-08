@@ -64,7 +64,6 @@
         <div
           v-show="menuVisible"
           class="z-10 absolute right-2.5 px-2 py-2 overlayMenu border border-primary-100 bg-white"
-          ref="overlayMenu"
         >
           <ul class="flex flex-col items-start">
             <li class="py-1">
@@ -108,10 +107,10 @@
           </ul>
         </div>
       </div>
-      <div class="flex" v-else>
+      <div v-else class="flex">
         <button @click="showDropdownMenu">
           <img
-            src="../../assets/default-avatar 1.png"
+            src="../../assets/default-avatar_1.png"
             alt="avatar"
             class="avatar"
           />
@@ -119,7 +118,6 @@
         <div
           v-show="menuVisible"
           class="z-10 absolute px-2 py-2 right-8 border border-primary-100 bg-white"
-          ref="overlayMenu"
         >
           <ul class="flex flex-col items-start">
             <li class="py-1">
@@ -230,12 +228,12 @@
     <div class="sm:hidden">
       <div v-if="!isLogin">
         <button
-          class="rounded-full border border-primary-500 text-primary-500 px-8 py-2.5 mr-4"
+          class="rounded-full border border-primary-500 text-primary-500 px-8 py-2 mr-4"
           @click="login"
         >
           登入
         </button>
-        <button class="rounded-full bg-primary-500 text-white px-8 py-2.5">
+        <button class="rounded-full bg-primary-500 text-white px-8 py-2">
           註冊
         </button>
       </div>
@@ -258,7 +256,7 @@
         </button>
         <button @click="showDropdownMenu">
           <img
-            src="../../assets/default-avatar 1.png"
+            src="../../assets/default-avatar_1.png"
             alt="avatar"
             class="avatar"
           />
@@ -266,7 +264,6 @@
         <div
           v-show="menuVisible"
           class="z-10 absolute top-14 border border-primary-100 bg-white"
-          ref="overlayMenu"
         >
           <ul class="flex flex-col items-start px-2.5 py-1">
             <li class="py-1">
@@ -395,7 +392,7 @@ const logout = () => {
 };
 
 const menuVisible = ref(false);
-const showDropdownMenu = (e: Event) => {
+const showDropdownMenu = () => {
   if (!store.state.sidebarModule.sidebarVisible) {
     menuVisible.value = !menuVisible.value;
   }
