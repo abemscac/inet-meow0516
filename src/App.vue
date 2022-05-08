@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import NavBar from './components/common-components/NavBar.vue';
-import Sidebar from './components/common-components/Sidebar.vue';
+import Sidebar from './components/common-components/AppSidebar.vue';
 import { useStore } from 'vuex';
 
 const store = useStore();

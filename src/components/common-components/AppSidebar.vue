@@ -50,7 +50,9 @@
 </template>
 
 <script setup lang="ts">
-const login = () => {};
+const login = () => {
+  console.log('login');
+};
 </script>
 
 <style scoped lang="scss">
