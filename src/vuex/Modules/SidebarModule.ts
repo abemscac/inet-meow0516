@@ -2,19 +2,19 @@ import type { Module } from 'vuex';
 import type { RootState } from '../Store';
 
 export type SidebarModuleState = {
-  sidebarVisible: boolean;
+  visible: boolean;
 };
 const SidebarModule: Module<SidebarModuleState, RootState> = {
   namespaced: true,
   state: {
-    sidebarVisible: false,
+    visible: false,
   },
   mutations: {
     toggle: (state) => {
-      state.sidebarVisible = !state.sidebarVisible;
+      state.visible = !state.visible;
     },
     close: (state) => {
-      state.sidebarVisible = false;
+      state.visible = false;
     },
   },
   actions: {
