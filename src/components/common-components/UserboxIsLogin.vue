@@ -1,7 +1,7 @@
 <template>
   <div class="sm:flex hidden">
     <div class="flex">
-      <button class="h-10" @click="showUserboxMenu">
+      <button class="w-9 h-9" @click="showUserboxMenu">
         <img
           src="../../assets/default-avatar_1.png"
           alt="avatar"

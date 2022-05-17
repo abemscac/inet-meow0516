@@ -1,6 +1,6 @@
 <template>
   <Sidebar v-if="store.state.sidebarModule.visible" />
-  <div :class="store.state.sidebarModule.visible ? 'bg-slate-200' : ''">
+  <div>
     <NavBar />
     <main class="w-full" @click="closeUserboxMenu">this is content</main>
   </div>

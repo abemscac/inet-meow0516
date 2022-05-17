@@ -1,5 +1,7 @@
 <template>
-  <nav class="flex justify-between px-16 py-3 sm:px-7">
+  <nav
+    class="flex items-center justify-between px-16 py-2.5 sm:px-6 bg-white drop-shadow"
+  >
     <button
       class="sm:flex sm:flex-col sm:justify-center hidden"
       @click="showSidebar"
@@ -7,16 +9,22 @@
       <font-awesome-icon icon="bars" class="text-primary-500" />
     </button>
 
-    <img src="../../assets/logo-I.svg" alt="inet" class="sm:flex hidden w-8" />
+    <img
+      src="../../assets/logo-I.svg"
+      alt="inet"
+      class="sm:flex hidden rounded w-8 h-8"
+    />
     <img src="../../assets/logo.svg" alt="inet" class="sm:hidden" />
 
-    <form class="flex sm:w-3/5 w-1/3 rounded border border-primary-200 px-2">
+    <form
+      class="flex items-center rounded border border-primary-200 px-3 search-form"
+    >
       <input
-        class="w-11/12 h-10 py-0.5 outline-0"
+        class="h-10 outline-0 grow mr-1"
         type="text"
         placeholder="搜尋INET"
       />
-      <button type="submit">
+      <button type="submit" class="w-6 h-6">
         <font-awesome-icon
           icon="magnifying-glass"
           class="px-1 text-primary-200"
@@ -58,3 +66,17 @@ const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
 };
 </script>
+
+<style lang="scss" scoped>
+.search-form {
+  width: 33vw;
+  min-width: 167px;
+  max-width: 480px;
+  @media (max-width: 680px) {
+    width: 45vw;
+  }
+  @media (max-width: 480px) {
+    width: auto;
+  }
+}
+</style>

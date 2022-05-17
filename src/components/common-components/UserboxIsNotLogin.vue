@@ -1,6 +1,9 @@
 <template>
   <div class="sm:flex hidden">
-    <button class="h-10" @click="showUserboxMenu">
+    <button
+      class="flex items-center justify-center w-8 h-8"
+      @click="showUserboxMenu"
+    >
       <font-awesome-icon
         :icon="['far', 'user']"
         class="h-5 inline-block mx-2 text-primary-500"
