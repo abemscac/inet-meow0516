@@ -70,9 +70,3 @@ const closeSidebar = () => {
   store.dispatch('sidebarModule/close');
 };
 </script>
-
-<style scoped lang="scss">
-.avatar {
-  height: 40px;
-}
-</style>

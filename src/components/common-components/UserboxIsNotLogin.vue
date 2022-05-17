@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed /* , ref  */ } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 type Emits = {
