@@ -14,23 +14,14 @@
       class="z-10 absolute px-2 py-2 right-2.5 top-14 overlayMenu border border-primary-100 bg-white"
       @click="closeUserboxMenu"
     >
-      <ul class="flex flex-col items-start">
-        <li class="py-1">
-          <button>
-            <font-awesome-icon icon="user-plus" class="w-4 inline-block mx-2" />
-            <span>註冊</span>
-          </button>
-        </li>
-        <li class="py-1">
-          <button @click="login">
-            <font-awesome-icon
-              icon="arrow-right-to-bracket"
-              class="w-4 inline-block mx-2"
-            />
-            <span>登入</span>
-          </button>
-        </li>
-      </ul>
+      <DropdownContainer>
+        <DropdownItem icon="user-plus" label="註冊" />
+        <DropdownItem
+          icon="arrow-right-to-bracket"
+          label="登入"
+          @click="login"
+        />
+      </DropdownContainer>
     </div>
   </div>
 
@@ -46,6 +37,8 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import AppButton from './AppButton.vue';
+import DropdownContainer from './DropdownContainer.vue';
+import DropdownItem from './DropdownItem.vue';
 
 type Emits = {
   (e: 'login', event: MouseEvent): void;
