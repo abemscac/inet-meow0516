@@ -2,15 +2,8 @@
   <div class="absolute w-full h-screen flex hidden sm:flex">
     <div class="w-72 bg-white p-6 shrink-0 z-50">
       <div class="flex gap-x-4">
-        <button
-          class="rounded-full border border-primary-500 text-primary-500 px-8 py-2.5 grow"
-          @click="login"
-        >
-          登入
-        </button>
-        <button class="rounded-full bg-primary-500 text-white px-8 py-2.5 grow">
-          註冊
-        </button>
+        <AppButton label="登入" class="btn-primary-light grow" @click="login" />
+        <AppButton label="註冊" class="btn-primary-dark grow" />
       </div>
       <div class="flex flex-col mt-6">
         <p class="font-bold text-2xl text-left">討論板</p>
@@ -61,6 +54,7 @@
 
 <script setup lang="ts">
 import { useStore } from 'vuex';
+import AppButton from './AppButton.vue';
 
 const store = useStore();
 const login = () => {

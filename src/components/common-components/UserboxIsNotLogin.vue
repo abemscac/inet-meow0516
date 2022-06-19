@@ -36,15 +36,8 @@
 
   <div class="sm:hidden">
     <div>
-      <button
-        class="rounded-full border border-primary-500 text-primary-500 px-8 py-2 mr-4"
-        @click="login"
-      >
-        登入
-      </button>
-      <button class="rounded-full bg-primary-500 text-white px-8 py-2">
-        註冊
-      </button>
+      <AppButton label="登入" class="btn-primary-light mr-4" @click="login" />
+      <AppButton label="註冊" class="btn-primary-dark" />
     </div>
   </div>
 </template>
@@ -52,6 +45,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import AppButton from './AppButton.vue';
 
 type Emits = {
   (e: 'login', event: MouseEvent): void;
