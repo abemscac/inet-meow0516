@@ -2,9 +2,7 @@
   <li class="py-1">
     <button>
       <font-awesome-icon :icon="icon" class="w-4 mx-2" />
-      <span>
-        <slot>{{ label }}</slot>
-      </span>
+      <span>{{ label }}</span>
     </button>
   </li>
 </template>

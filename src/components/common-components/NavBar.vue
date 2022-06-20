@@ -31,10 +31,8 @@
         />
       </button>
     </form>
-    <div>
-      <UserBoxLogin v-if="isLogin" @logout="logout" />
-      <UserBoxNotLogin v-else @login="login" />
-    </div>
+    <UserBoxLogin v-if="isLogin" @logout="logout" />
+    <UserBoxNotLogin v-else @login="login" />
   </nav>
 </template>
 
