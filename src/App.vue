@@ -2,7 +2,9 @@
   <Sidebar v-if="store.state.sidebarModule.visible" />
   <div>
     <NavBar />
-    <main class="w-full" @click="closeUserboxMenu">this is content</main>
+    <main class="w-full" @click="closeUserboxMenu">
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
