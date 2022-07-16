@@ -6,6 +6,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        base: '#F4F5F9',
         primary: {
           100: '#E6EBF4',
           200: '#A2B7CE',
@@ -19,6 +20,9 @@ module.exports = {
           400: '#DB579F',
           500: '#E3238B',
           600: '#AF0E65',
+        },
+        indicator: {
+          danger: '#DB0F25',
         },
       },
     },
