@@ -12,7 +12,6 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
-import { RoutePath } from './router';
 import NavBar from './components/common-components/NavBar.vue';
 import Sidebar from './components/common-components/AppSidebar.vue';
 
@@ -23,7 +22,7 @@ const closeUserboxMenu = () => {
 };
 
 const isRegisterPage = computed(() =>
-  route.path === RoutePath.register ? true : false
+  route.name === 'Register' ? true : false
 );
 </script>
 

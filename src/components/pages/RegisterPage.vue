@@ -10,6 +10,8 @@
             class="w-full border border-primary-200 rounded-lg p-2 mb-1"
             :class="isError ? 'border-indicator-danger' : ''"
             placeholder="帳號*"
+            :pattern="usernameRegExp.source"
+            required
           />
           <p
             v-if="isError"
@@ -24,10 +26,12 @@
         </div>
         <div class="mb-4">
           <input
-            type="text"
+            type="password"
             class="w-full border border-primary-200 rounded-lg p-2 mb-1"
             :class="isError ? 'border-indicator-danger' : ''"
             placeholder="密碼*"
+            :pattern="passwordRegExp.source"
+            required
           />
           <p
             v-if="isError"
@@ -42,10 +46,12 @@
         </div>
         <div class="mb-4">
           <input
-            type="text"
+            type="password"
             class="w-full border border-primary-200 rounded-lg p-2 mb-1"
             :class="isError ? 'border-indicator-danger' : ''"
             placeholder="確認密碼*"
+            :pattern="passwordRegExp.source"
+            required
           />
           <p
             v-if="isError"
@@ -69,12 +75,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useStore } from 'vuex';
-import router, { RoutePath } from '../../router';
+import router from '../../router';
 import AppButton from '../common-components/AppButton.vue';
+import { usernameRegExp, passwordRegExp } from '../../constants/regexp.const';
 
 const store = useStore();
 if (store.state.userInfoModule.isLogin) {
-  router.push({ path: RoutePath.home });
+  router.push({ name: 'Home' });
 }
 
 const isError = ref(false);
