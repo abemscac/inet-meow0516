@@ -1,7 +1,7 @@
 <template>
   <Sidebar v-if="store.state.sidebarModule.visible" />
   <div class="h-screen bg-base sm:bg-white">
-    <NavBar v-if="!isRegisterPage" />
+    <NavBar v-if="!isVisible" />
     <main class="w-full" @click="closeUserboxMenu">
       <router-view></router-view>
     </main>
@@ -21,8 +21,8 @@ const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
 };
 
-const isRegisterPage = computed(() =>
-  route.name === 'Register' ? true : false
+const isVisible = computed(() =>
+  route.name === 'Register' || route.name === 'Login' ? true : false
 );
 </script>
 
