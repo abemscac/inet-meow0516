@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center w-4/12 sm:w-9/12 py-10">
       <img src="../../assets/logo-I-rounded.png" alt="inet" class="w-16" />
       <h1 class="text-3xl font-bold my-6">註冊 INET</h1>
-      <form>
+      <form class="w-full">
         <div class="mb-4">
           <input
             type="text"
@@ -86,8 +86,7 @@ if (store.state.userInfoModule.isLogin) {
 
 const isError = ref(false);
 const navToLogin = () => {
-  console.log('router push');
-  // router.push()
+  router.push({ name: 'Login' });
 };
 </script>
 <style lang="scss"></style>

@@ -37,7 +37,11 @@
           </p>
         </div>
 
-        <AppButton label="登入" class="w-full btn-primary-dark" />
+        <AppButton
+          label="登入"
+          class="w-full btn-primary-dark"
+          @click="login"
+        />
       </form>
       <p class="my-2">
         還沒有帳號嗎？<button class="text-primary-400" @click="navToRegister">
@@ -63,6 +67,11 @@ if (store.state.userInfoModule.isLogin) {
 const isError = ref(false);
 const navToRegister = () => {
   router.push({ name: 'Register' });
+};
+
+const login = () => {
+  store.commit('userInfoModule/login');
+  router.push({ name: 'Home' });
 };
 </script>
 <style lang="scss"></style>

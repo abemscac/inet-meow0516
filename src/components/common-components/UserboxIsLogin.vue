@@ -41,17 +41,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import router from '../../router';
 import DropdownContainer from './DropdownContainer.vue';
 import DropdownItem from './DropdownItem.vue';
 
-type Emits = {
-  (e: 'logout', event: MouseEvent): void;
-};
-const emit = defineEmits<Emits>();
 const store = useStore();
 
-const logout = (e: MouseEvent) => {
-  emit('logout', e);
+const logout = () => {
+  store.commit('userInfoModule/logout');
+  router.push({ name: 'Home' });
 };
 const sidebarVisible = computed(() => store.state.sidebarModule.visible);
 const showUserboxMenu = () => {
