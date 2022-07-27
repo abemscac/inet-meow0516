@@ -1,9 +1,13 @@
 <template>
   <div class="absolute w-full h-screen flex hidden sm:flex">
     <div class="w-72 bg-white p-6 shrink-0 z-50">
-      <div class="flex gap-x-4">
+      <div v-if="!store.state.userInfoModule.isLogin" class="flex gap-x-4">
         <AppButton label="登入" class="btn-primary-light grow" @click="login" />
-        <AppButton label="註冊" class="btn-primary-dark grow" />
+        <AppButton
+          label="註冊"
+          class="btn-primary-dark grow"
+          @click="register"
+        />
       </div>
       <div class="flex flex-col mt-6">
         <p class="font-bold text-2xl text-left">討論板</p>
@@ -53,13 +57,23 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import AppButton from './AppButton.vue';
 
+const router = useRouter();
 const store = useStore();
+
 const login = () => {
-  console.log('login');
+  router.push({ name: 'Login' });
+  closeSidebar();
 };
+
+const register = () => {
+  router.push({ name: 'Register' });
+  closeSidebar();
+};
+
 const closeSidebar = () => {
   store.dispatch('sidebarModule/close');
 };

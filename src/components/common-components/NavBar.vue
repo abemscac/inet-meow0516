@@ -31,29 +31,18 @@
         />
       </button>
     </form>
-    <UserBoxLogin v-if="isLogin" @logout="logout" />
-    <UserBoxNotLogin v-else @login="login" />
+    <UserBoxLogin v-if="store.state.userInfoModule.isLogin" />
+    <UserBoxNotLogin v-else />
   </nav>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 import UserBoxLogin from '../common-components/UserboxIsLogin.vue';
 import UserBoxNotLogin from '../common-components/UserboxIsNotLogin.vue';
 
 const store = useStore();
-
-const isLogin = ref(true);
-
-const login = () => {
-  isLogin.value = true;
-};
-
-const logout = () => {
-  isLogin.value = false;
-};
 
 const showSidebar = () => {
   store.dispatch('sidebarModule/toggle');
