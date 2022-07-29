@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useStore } from '../../vuex/Store';
 import router from '../../router';
 import DropdownContainer from './DropdownContainer.vue';
 import DropdownItem from './DropdownItem.vue';

@@ -73,20 +73,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useStore } from 'vuex';
+import { onMounted, ref } from 'vue';
+import { useStore } from '../../vuex/Store';
 import router from '../../router';
 import AppButton from '../common-components/AppButton.vue';
 import { usernameRegExp, passwordRegExp } from '../../constants/regexp.const';
 
 const store = useStore();
-if (store.state.userInfoModule.isLogin) {
-  router.push({ name: 'Home' });
-}
 
 const isError = ref(false);
 const navToLogin = () => {
   router.push({ name: 'Login' });
 };
+
+onMounted(() => {
+  if (store.state.userInfoModule.isLogin) {
+    router.push({ name: 'Home' });
+  }
+});
 </script>
 <style lang="scss"></style>
