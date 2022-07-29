@@ -7,12 +7,16 @@ import {
   faGear,
   faMagnifyingGlass,
   faUserPlus,
+  faHeart as faHeartSolid,
 } from '@fortawesome/free-solid-svg-icons';
+
 import {
   faBookmark,
   faClock,
   faPenToSquare,
   faUser,
+  faHeart,
+  faEye,
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
@@ -25,7 +29,10 @@ library.add(
   faMagnifyingGlass,
   faPenToSquare,
   faUser,
-  faUserPlus
+  faUserPlus,
+  faEye,
+  faHeartSolid,
+  faHeart
 );
 
 export default FontAwesomeIcon;
