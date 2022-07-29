@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     screens: {
       sm: { max: '680px' },
+      md: { max: '1024px' },
     },
     extend: {
       colors: {
