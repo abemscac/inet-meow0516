@@ -1,6 +1,6 @@
 <template>
   <Sidebar v-if="store.state.sidebarModule.visible" />
-  <div class="h-screen bg-base sm:bg-white">
+  <div class="h-screen">
     <NavBar v-if="!isVisible" />
     <main class="w-full" @click="closeUserboxMenu">
       <router-view></router-view>
