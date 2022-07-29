@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from 'vuex';
+import { useStore } from '../../vuex/Store';
 
 import UserBoxLogin from '../common-components/UserboxIsLogin.vue';
 import UserBoxNotLogin from '../common-components/UserboxIsNotLogin.vue';

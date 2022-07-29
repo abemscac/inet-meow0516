@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { useStore } from '../../vuex/Store';
 import AppButton from './AppButton.vue';
 
 const router = useRouter();

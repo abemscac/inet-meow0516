@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useStore } from './vuex/Store';
 import { useRoute } from 'vue-router';
 import NavBar from './components/common-components/NavBar.vue';
 import Sidebar from './components/common-components/AppSidebar.vue';
@@ -21,8 +21,8 @@ const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
 };
 
-const isVisible = computed(() =>
-  route.name === 'Register' || route.name === 'Login' ? true : false
+const isVisible = computed(
+  () => route.name === 'Register' || route.name === 'Login'
 );
 </script>
 
