@@ -8,13 +8,16 @@
     >
       <font-awesome-icon icon="bars" class="text-primary-500" />
     </button>
-
-    <img
-      src="../../assets/logo-I.svg"
-      alt="inet"
-      class="sm:flex hidden rounded w-8 h-8"
-    />
-    <img src="../../assets/logo.svg" alt="inet" class="sm:hidden" />
+    <router-link :to="{ name: 'Home' }">
+      <img
+        src="../../assets/logo-I.svg"
+        alt="inet"
+        class="sm:flex hidden rounded w-8 h-8"
+      />
+    </router-link>
+    <router-link :to="{ name: 'Home' }">
+      <img src="../../assets/logo.svg" alt="inet" class="sm:hidden" />
+    </router-link>
 
     <form
       class="flex items-center rounded border border-primary-200 px-3 search-form"

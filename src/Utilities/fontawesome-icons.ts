@@ -8,6 +8,8 @@ import {
   faMagnifyingGlass,
   faUserPlus,
   faHeart as faHeartSolid,
+  faArrowUpFromBracket,
+  faImage,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -17,6 +19,7 @@ import {
   faUser,
   faHeart,
   faEye,
+  faPaperPlane,
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
@@ -32,7 +35,10 @@ library.add(
   faUserPlus,
   faEye,
   faHeartSolid,
-  faHeart
+  faHeart,
+  faPaperPlane,
+  faArrowUpFromBracket,
+  faImage
 );
 
 export default FontAwesomeIcon;

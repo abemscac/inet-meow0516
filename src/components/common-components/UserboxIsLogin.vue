@@ -1,10 +1,12 @@
 <template>
   <div class="flex">
     <button class="sm:hidden mr-4">
-      <font-awesome-icon
-        :icon="['far', 'pen-to-square']"
-        class="h-5 inline-block text-primary-500"
-      />
+      <router-link :to="{ name: 'Edit Article' }">
+        <font-awesome-icon
+          :icon="['far', 'pen-to-square']"
+          class="h-5 inline-block text-primary-500"
+        />
+      </router-link>
     </button>
     <button class="w-9 h-9" @click="showUserboxMenu">
       <img
@@ -19,11 +21,13 @@
       @click="closeUserboxMenu"
     >
       <DropdownContainer>
-        <DropdownItem
-          class="sm:flex hidden"
-          :icon="['far', 'pen-to-square']"
-          label="發表文章"
-        />
+        <router-link :to="{ name: 'Edit Article' }">
+          <DropdownItem
+            class="sm:flex hidden"
+            :icon="['far', 'pen-to-square']"
+            label="發表文章"
+          />
+        </router-link>
         <DropdownItem :icon="['far', 'user']" label="個人頁面" />
         <DropdownItem :icon="['far', 'bookmark']" label="我的收藏" />
         <DropdownItem :icon="['far', 'clock']" label="瀏覽紀錄" />
