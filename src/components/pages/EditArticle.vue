@@ -97,7 +97,49 @@
         class="btn-primary-dark"
       />
     </section>
-    <section v-else class="p-8 bg-white overflow-y-auto">Preview Mode</section>
+    <section v-else class="bg-white overflow-y-auto">
+      <article class="flex flex-col">
+        <p class="p-6 font-bold text-left text-2xl">
+          {{ article.title ?? '現在沒有標題' }}
+        </p>
+        <div class="bg-gray-100 w-full h-80">
+          <img
+            v-if="previewImage"
+            :src="previewImage"
+            class="w-full h-80 object-cover"
+          />
+        </div>
+        <div class="p-6 text-left">
+          <div class="flex">
+            <img src="../../assets/default-avatar_1.png" class="h-9" />
+            <div class="flex flex-col items-start px-4">
+              <p>{{ store.state.userInfoModule.userInfo.username }}</p>
+              <div class="flex gap-x-2 text-xs">
+                <img src="../../assets/animal.png" class="h-4" alt="category" />
+                <p>{{ article.category ?? '分類' }}</p>
+                &middot;
+                <p class="text-gray-300">剛剛</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start gap-x-4 text-xs py-2">
+            <div class="flex gap-x-1">
+              <font-awesome-icon :icon="['far', 'eye']" />
+              <p>很多!</p>
+            </div>
+            <div class="flex gap-x-1">
+              <button>
+                <font-awesome-icon :icon="['far', 'heart']" />
+              </button>
+              <p>也很多!</p>
+            </div>
+          </div>
+          <p class="py-4 overflow-y-auto h-60">
+            {{ article.body ?? '現在還沒有輸入內文' }}
+          </p>
+        </div>
+      </article>
+    </section>
   </div>
 </template>
 
@@ -105,22 +147,23 @@
 import { reactive, ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import AppButton from '../common-components/AppButton.vue';
+import { useStore } from '../../vuex/Store';
 
 type Article = {
   category?: string;
   title?: string;
   image?: File;
   body?: string;
-  views: string;
-  likes: string;
 };
 
 type Category = {
-  value: string;
+  value?: string;
   label: string;
 };
 
 type DisplayMode = 'edit' | 'preview';
+
+const store = useStore();
 
 const displayMode = ref<DisplayMode>('edit');
 const updateDisplayMode = () => {
@@ -132,17 +175,15 @@ const updateDisplayMode = () => {
 };
 
 const article = reactive<Article>({
-  category: '',
+  category: undefined,
   title: undefined,
   image: undefined,
   body: undefined,
-  views: '很多!',
-  likes: '也很多!',
 });
 
 const categories = ref<Array<Category>>([
   {
-    value: '',
+    value: undefined,
     label: '分類*',
   },
   {
