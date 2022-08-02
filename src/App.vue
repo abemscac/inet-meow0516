@@ -2,7 +2,10 @@
   <Sidebar v-if="store.state.sidebarModule.visible" />
   <div class="h-screen">
     <NavBar v-if="!isVisible" />
-    <main class="w-full" @click="closeUserboxMenu">
+    <main
+      class="w-full bg-base sm:bg-white overflow-y-auto"
+      @click="closeUserboxMenu"
+    >
       <router-view></router-view>
     </main>
   </div>
@@ -36,6 +39,6 @@ const isVisible = computed(
 }
 
 main {
-  height: calc(100vh - 66px);
+  height: calc(100vh - 62px);
 }
 </style>

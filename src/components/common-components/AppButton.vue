@@ -1,6 +1,9 @@
 <template>
   <button class="rounded-full px-8 py-2">
-    <slot> {{ label }}</slot>
+    <slot>
+      <font-awesome-icon v-if="icon?.length" :icon="icon" />
+      {{ label }}</slot
+    >
   </button>
 </template>
 
@@ -9,7 +12,8 @@ import { toRefs } from 'vue';
 
 type Props = {
   label: string;
+  icon?: Array<string>;
 };
 const props = defineProps<Props>();
-const { label } = toRefs(props);
+const { label, icon } = toRefs(props);
 </script>
