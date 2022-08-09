@@ -35,7 +35,17 @@
             alt="category"
           />
           <p class="truncate max-w-[200px] sm:max-w-[50px] text-xs">
-            {{ article.author.name }}
+            <Highlighter
+              v-if="route.name === 'Search'"
+              class="my-highlight"
+              highlight-class-name="highlight"
+              :search-words="keywords"
+              :auto-escape="true"
+              :text-to-highlight="article.author.name"
+            />
+            <span v-else>
+              {{ article.author.name }}
+            </span>
           </p>
         </router-link>
         &middot;
@@ -47,10 +57,30 @@
         <p
           class="font-bold sm:max-w-[200px] hover:text-primary-400 truncate max-w-xs"
         >
-          {{ article.title }}
+          <Highlighter
+            v-if="route.name === 'Search'"
+            class="my-highlight"
+            highlight-class-name="highlight"
+            :search-words="keywords"
+            :auto-escape="true"
+            :text-to-highlight="article.title"
+          />
+          <span v-else>
+            {{ article.title }}
+          </span>
         </p>
         <p class="line-clamp-2 sm:max-w-[300px] text-xs text-gray-400">
-          {{ article.body }}
+          <Highlighter
+            v-if="route.name === 'Search'"
+            class="my-highlight"
+            highlight-class-name="highlight"
+            :search-words="keywords"
+            :auto-escape="true"
+            :text-to-highlight="article.body"
+          />
+          <span v-else>
+            {{ article.body }}
+          </span>
         </p>
       </router-link>
       <div class="flex justify-start gap-x-4 text-xs">
@@ -71,13 +101,20 @@
 
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
+import { useStore } from '../../vuex/Store';
+import { useRoute } from 'vue-router';
 import { RouteLocationRaw } from 'vue-router';
+import Highlighter from 'vue-highlight-words';
 import { mockArticles } from '../../mock/mockArticle';
 import { dateToDateString } from '../../Utilities/CompileTool';
 
 const props = defineProps<{
   article: typeof mockArticles[0];
 }>();
+
+const route = useRoute();
+const store = useStore();
+const keywords = store.state.searchModule.searchItem.split(' ');
 
 const { article } = toRefs(props);
 
@@ -92,3 +129,10 @@ const like = () => {
   console.log('like this article');
 };
 </script>
+
+<style lang="scss" scoped>
+::v-deep(.highlight) {
+  color: theme('colors.secondary.500');
+  background-color: white;
+}
+</style>
