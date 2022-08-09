@@ -1,11 +1,8 @@
 <template>
   <Sidebar v-if="store.state.sidebarModule.visible" />
-  <div class="h-screen">
-    <NavBar v-if="!isVisible" />
-    <main
-      class="w-full bg-base sm:bg-white overflow-y-auto"
-      @click="closeUserboxMenu"
-    >
+  <div class="h-screen flex flex-col">
+    <NavBar v-if="!isNavVisible" />
+    <main class="w-full" @click="closeUserboxMenu">
       <router-view></router-view>
     </main>
   </div>
@@ -24,7 +21,7 @@ const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
 };
 
-const isVisible = computed(
+const isNavVisible = computed(
   () => route.name === 'Register' || route.name === 'Login'
 );
 </script>
@@ -36,9 +33,5 @@ const isVisible = computed(
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-main {
-  height: calc(100vh - 62px);
 }
 </style>
