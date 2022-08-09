@@ -1,7 +1,7 @@
 <template>
-  <div class="flex md:py-4 py-10">
-    <HomePageSidebar />
-    <div class="flex justify-start w-full md:w-11/12 px-10 md:px-0">
+  <div class="flex">
+    <HomePageSidebar class="my-10 md:my-4" />
+    <ArticleList class="overflow-y-auto">
       <section
         class="w-4/6 border border-gray-100 rounded-lg bg-white p-4 md:w-full md:border-0"
         :class="articles ? 'h-fit' : 'h-2/6'"
@@ -30,13 +30,14 @@
         </section>
         <section v-else class="text-gray-300">沒有相關文章</section>
       </section>
-    </div>
+    </ArticleList>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
+import ArticleList from '../common-components/ArticleList.vue';
 import HomePageArticle from './HomePageArticle.vue';
 import HomePageSidebar from './HomePageSidebar.vue';
 import { mockArticles } from '../../mock/mockArticle';
