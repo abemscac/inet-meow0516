@@ -21,8 +21,10 @@
 
     <form
       class="flex items-center rounded border border-primary-200 px-3 search-form"
+      @submit="handleSubmit"
     >
       <input
+        v-model="searchItem"
         class="h-10 outline-0 grow mr-1"
         type="text"
         placeholder="搜尋INET"
@@ -40,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import router from '../../router';
 import { useStore } from '../../vuex/Store';
 
 import UserBoxLogin from '../common-components/UserboxIsLogin.vue';
@@ -54,6 +58,13 @@ const showSidebar = () => {
 
 const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
+};
+
+const searchItem = ref('');
+const handleSubmit = (e: Event) => {
+  e.preventDefault();
+  store.commit('searchModule/setSearchItem', searchItem.value);
+  router.push({ name: 'Search', query: { item: searchItem.value } });
 };
 </script>
 

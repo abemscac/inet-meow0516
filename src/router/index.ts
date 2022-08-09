@@ -3,6 +3,7 @@ import HomePage from '../components/pages/HomePage.vue';
 import RegisterPage from '../components/pages/RegisterPage.vue';
 import LoginPage from '../components/pages/LoginPage.vue';
 import EditArticle from '../components/pages/EditArticle.vue';
+import SearchPage from '../components/pages/SearchPage.vue';
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -24,6 +25,11 @@ const routes: VueRouter.RouteRecordRaw[] = [
     name: 'Edit Article',
     path: '/edit-article',
     component: EditArticle,
+  },
+  {
+    name: 'Search',
+    path: '/search',
+    component: SearchPage,
   },
 ];
 
