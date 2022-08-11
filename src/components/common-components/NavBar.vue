@@ -64,6 +64,7 @@ const searchItem = ref('');
 const handleSubmit = (e: Event) => {
   e.preventDefault();
   store.commit('searchModule/setSearchItem', searchItem.value);
+  store.dispatch('searchModule/setSearchResults');
   router.push({ name: 'Search', query: { item: searchItem.value } });
 };
 </script>

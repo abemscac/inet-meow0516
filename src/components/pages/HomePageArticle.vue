@@ -105,11 +105,11 @@ import { useStore } from '../../vuex/Store';
 import { useRoute } from 'vue-router';
 import { RouteLocationRaw } from 'vue-router';
 import Highlighter from 'vue-highlight-words';
-import { mockArticles } from '../../mock/mockArticle';
+import { Article } from '../../mock/mockArticle';
 import { dateToDateString } from '../../Utilities/CompileTool';
 
 const props = defineProps<{
-  article: typeof mockArticles[0];
+  article: Article;
 }>();
 
 const route = useRoute();
