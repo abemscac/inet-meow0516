@@ -1,4 +1,29 @@
-export const mockArticles = [
+export type Article = {
+  id: number;
+  category: ArticleCategory;
+  author: Author;
+  coverImageUrl: string;
+  title: string;
+  body: string;
+  views: number;
+  likes: null | number;
+  likeId: null | number;
+  createdAt: Date;
+  lastModifiedAt: null | Date;
+};
+export type ArticleCategory = {
+  code: string;
+  imageUrl: string;
+};
+export type Author = {
+  id: number;
+  username: string;
+  name: string;
+  avatarUrl: string;
+  createdAt: Date;
+};
+
+export const mockArticles: Array<Article> = [
   {
     id: 1,
     category: {
@@ -135,7 +160,6 @@ export const mockArticles = [
     createdAt: new Date('2022-06-27T06:32:38.231Z'),
     lastModifiedAt: new Date('2022-06-27T06:32:38.231Z'),
   },
-  /*
   {
     id: 8,
     category: {
@@ -158,5 +182,5 @@ export const mockArticles = [
     likeId: null,
     createdAt: new Date('2022-06-27T06:32:38.231Z'),
     lastModifiedAt: new Date('2022-06-27T06:32:38.231Z'),
-  }, */
+  },
 ];
