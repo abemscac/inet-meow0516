@@ -138,7 +138,7 @@ export const mockArticles: Array<Article> = [
   },
 
   {
-    id: 7,
+    id: 6,
     category: {
       code: 'sports',
       imageUrl: 'https://i.imgur.com/s4PDhtLs.jpg',
@@ -161,7 +161,7 @@ export const mockArticles: Array<Article> = [
     lastModifiedAt: new Date('2022-06-27T06:32:38.231Z'),
   },
   {
-    id: 8,
+    id: 7,
     category: {
       code: 'sports',
       imageUrl: 'https://i.imgur.com/s4PDhtLs.jpg',

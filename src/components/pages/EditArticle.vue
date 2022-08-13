@@ -64,7 +64,7 @@ const article = reactive<Article>({
 
 onBeforeRouteLeave(() => {
   if (article.category || article.title || article.image || article.body) {
-    return confirm('資料尚未儲存，是否離開此頁面？') ? true : false;
+    return confirm('資料尚未儲存，是否離開此頁面？');
   }
 });
 

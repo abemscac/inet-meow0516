@@ -21,10 +21,10 @@
 
     <form
       class="flex items-center rounded border border-primary-200 px-3 search-form"
-      @submit="handleSubmit"
+      @submit.prevent="handleSubmit"
     >
       <input
-        v-model="searchItem"
+        v-model="keyword"
         class="h-10 outline-0 grow mr-1"
         type="text"
         placeholder="搜尋INET"
@@ -42,13 +42,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import router from '../../router';
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from '../../vuex/Store';
 
 import UserBoxLogin from '../common-components/UserboxIsLogin.vue';
 import UserBoxNotLogin from '../common-components/UserboxIsNotLogin.vue';
 
+const route = useRoute();
+const router = useRouter();
 const store = useStore();
 
 const showSidebar = () => {
@@ -60,13 +62,24 @@ const closeUserboxMenu = () => {
   store.dispatch('userboxModule/close');
 };
 
-const searchItem = ref('');
-const handleSubmit = (e: Event) => {
-  e.preventDefault();
-  store.commit('searchModule/setSearchItem', searchItem.value);
-  store.dispatch('searchModule/setSearchResults');
-  router.push({ name: 'Search', query: { item: searchItem.value } });
+const keyword = ref<string>((route.query.keyword as string) || '');
+
+const handleSubmit = () => {
+  if (!keyword.value) return;
+  router.push({
+    name: 'Search',
+    query: {
+      keyword: keyword.value,
+    },
+  });
 };
+
+watch(
+  () => route.query.keyword,
+  (value) => {
+    keyword.value = (value as string) || '';
+  }
+);
 </script>
 
 <style lang="scss" scoped>
