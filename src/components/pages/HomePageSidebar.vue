@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="h-fit w-1/4 ml-36 border border-gray-100 rounded-lg bg-white p-4 md:hidden"
+    class="h-fit w-1/4 ml-36 border border-gray-100 rounded-lg bg-white p-4 md:hidden sticky top-0"
   >
     <h3 class="font-bold text-2xl text-left">討論板</h3>
     <div class="flex flex-col gap-y-4 mt-6">
