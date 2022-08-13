@@ -4,34 +4,30 @@ import type { Article } from '../../mock/mockArticle';
 import { mockArticles } from '../../mock/mockArticle';
 
 export type SearchModuleState = {
-  searchItem: string;
-  searchResults: Array<Article>;
+  results: Array<Article>;
 };
+
 const SearchModule: Module<SearchModuleState, RootState> = {
   namespaced: true,
   state: {
-    searchItem: '',
-    searchResults: [],
+    results: [],
   },
   mutations: {
-    setSearchItem: (state, payload) => {
-      state.searchItem = payload;
-    },
-    setSearchResults: (state, payload) => {
-      state.searchResults = payload;
+    setResults: (state, payload) => {
+      state.results = payload;
     },
   },
   actions: {
-    setSearchResults: ({ state, commit }) => {
-      const searchResults = mockArticles.filter((x) => {
-        const searchItem = state.searchItem;
+    search: ({ commit }, keyword: string) => {
+      const loweredKeyword = keyword.toLowerCase();
+      const results = mockArticles.filter((x) => {
         return (
-          x.title.includes(searchItem) ||
-          x.body.includes(searchItem) ||
-          x.author.name.includes(searchItem)
+          x.title.toLowerCase().includes(loweredKeyword) ||
+          x.body.toLowerCase().includes(loweredKeyword) ||
+          x.author.name.toLowerCase().includes(loweredKeyword)
         );
       });
-      commit('setSearchResults', searchResults);
+      commit('setResults', results);
     },
   },
 };

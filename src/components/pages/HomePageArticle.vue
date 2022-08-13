@@ -101,22 +101,26 @@
 
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
-import { useStore } from '../../vuex/Store';
-import { useRoute } from 'vue-router';
-import { RouteLocationRaw } from 'vue-router';
+import { useRoute, RouteLocationRaw } from 'vue-router';
 import Highlighter from 'vue-highlight-words';
 import { Article } from '../../mock/mockArticle';
 import { dateToDateString } from '../../Utilities/CompileTool';
 
-const props = defineProps<{
-  article: Article;
-}>();
-
 const route = useRoute();
-const store = useStore();
-const keywords = store.state.searchModule.searchItem.split(' ');
 
-const { article } = toRefs(props);
+const props = withDefaults(
+  defineProps<{
+    article: Article;
+    highlightKeyword?: string;
+  }>(),
+  {
+    highlightKeyword: '',
+  }
+);
+
+const { article, highlightKeyword } = toRefs(props);
+
+const keywords = computed<string[]>(() => highlightKeyword.value.split(' '));
 
 const articleLink = computed<RouteLocationRaw>(() => ({
   name: 'Home',
