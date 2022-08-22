@@ -1,7 +1,7 @@
 <template>
   <ArticleList class="overflow-y-auto">
     <section
-      class="w-4/6 border border-gray-100 rounded-lg bg-white p-4 md:w-full md:border-0"
+      class="w-4/6 border border-gray-100 rounded-lg bg-white p-6 md:w-full md:border-0"
       :class="store.state.searchModule.results ? 'h-fit' : 'h-2/6'"
     >
       <div class="flex items-center mb-4">
@@ -28,7 +28,7 @@
         />
       </section>
       <section v-else class="text-gray-300">
-        <hr class="hidden sm:block sm:py-2" />
+        <hr class="my-4" />
         沒有找到和
         <span class="text-secondary-500 mx-1">
           {{ `"${keyword}"` }}
@@ -42,7 +42,7 @@
 <script setup lang="ts">
 import { onMounted, toRefs } from 'vue';
 import { useStore } from '../../vuex/Store';
-import ArticleList from '../common-components/ArticleList.vue';
+import ArticleList from '../common-components/ArticleListContainer.vue';
 import HomePageArticle from './HomePageArticle.vue';
 
 const store = useStore();

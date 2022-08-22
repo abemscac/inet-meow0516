@@ -8,7 +8,7 @@
       />
     </router-link>
     <div class="mx-2 w-9/12">
-      <div class="flex justify-start items-center gap-x-2">
+      <div class="flex justify-start items-center gap-x-2 py-1">
         <router-link
           class="text-primary-400 align flex gap-x-1"
           :to="{ name: 'Home' }"
@@ -21,10 +21,11 @@
           />
           <p class="text-xs">
             {{ article.category.code }}
+            &middot;
           </p>
         </router-link>
-        &middot;
         <router-link
+          v-if="route.name !== 'Profile'"
           class="text-primary-400 flex gap-x-1"
           :to="{ name: 'Home' }"
         >
@@ -46,9 +47,9 @@
             <span v-else>
               {{ article.author.name }}
             </span>
+            &middot;
           </p>
         </router-link>
-        &middot;
         <p class="text-gray-400 text-xs">
           {{ dateToDateString(article.createdAt) }}
         </p>
