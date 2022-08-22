@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <HomePageSidebar class="my-10 md:my-4" />
-    <ArticleList class="overflow-y-auto">
+    <ArticleList class="overflow-y-auto scroll-container flex flex-col">
       <section
         class="w-4/6 border border-gray-100 rounded-lg bg-white p-6 md:w-full md:border-0"
         :class="articles ? 'h-fit' : 'h-2/6'"
@@ -33,17 +33,22 @@
           沒有相關文章
         </section>
       </section>
+      <div
+        class="w-4/6 md:w-full text-primary-500 my-3 p-6 text-xl self-start scroll-target"
+      >
+        Load more
+      </div>
     </ArticleList>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
 import ArticleList from '../common-components/ArticleListContainer.vue';
 import HomePageArticle from './HomePageArticle.vue';
 import HomePageSidebar from './HomePageSidebar.vue';
-import { mockArticles } from '../../mock/mockArticle';
+import { Article, mockArticles } from '../../mock/mockArticle';
 
 enum Duration {
   Today = 'today',
@@ -86,5 +91,33 @@ const selectDuration = (duration: Duration) => {
   activeDuration.value = duration;
 };
 
-const articles = ref(mockArticles);
+const articles = ref<Array<Article>>([]);
+
+const getArticles = () => {
+  articles.value.push(...mockArticles);
+};
+
+onMounted(() => {
+  const scrollContainer = document.querySelector('.scroll-container');
+  const scrollTarget = document.querySelector('.scroll-target');
+
+  const scrollSetting = {
+    root: scrollContainer,
+    rootMargin: '0px',
+    threshold: 1,
+  };
+
+  let handleScroll = (entries: Array<IntersectionObserverEntry>) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        getArticles();
+      }
+    });
+  };
+
+  const scrollObserver = new IntersectionObserver(handleScroll, scrollSetting);
+  if (scrollTarget !== null) {
+    scrollObserver.observe(scrollTarget);
+  }
+});
 </script>
