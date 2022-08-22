@@ -3,7 +3,7 @@
     <HomePageSidebar class="my-10 md:my-4" />
     <ArticleList class="overflow-y-auto">
       <section
-        class="w-4/6 border border-gray-100 rounded-lg bg-white p-4 md:w-full md:border-0"
+        class="w-4/6 border border-gray-100 rounded-lg bg-white p-6 md:w-full md:border-0"
         :class="articles ? 'h-fit' : 'h-2/6'"
       >
         <h2 class="font-bold text-3xl text-left mb-4 md:text-4xl">熱門文章</h2>
@@ -28,7 +28,10 @@
             :article="article"
           />
         </section>
-        <section v-else class="text-gray-300">沒有相關文章</section>
+        <section v-else class="text-gray-300">
+          <hr class="my-4" />
+          沒有相關文章
+        </section>
       </section>
     </ArticleList>
   </div>
@@ -37,7 +40,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
-import ArticleList from '../common-components/ArticleList.vue';
+import ArticleList from '../common-components/ArticleListContainer.vue';
 import HomePageArticle from './HomePageArticle.vue';
 import HomePageSidebar from './HomePageSidebar.vue';
 import { mockArticles } from '../../mock/mockArticle';
