@@ -5,6 +5,7 @@ import LoginPage from '../components/pages/LoginPage.vue';
 import EditArticle from '../components/pages/EditArticle.vue';
 import SearchPage from '../components/pages/SearchPage.vue';
 import ProfilePage from '../components/pages/ProfilePage.vue';
+import SettingPage from '../components/pages/SettingPage.vue';
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -36,6 +37,11 @@ const routes: VueRouter.RouteRecordRaw[] = [
     name: 'Profile',
     path: '/profile',
     component: ProfilePage,
+  },
+  {
+    name: 'Setting',
+    path: '/setting',
+    component: SettingPage,
   },
 ];
 

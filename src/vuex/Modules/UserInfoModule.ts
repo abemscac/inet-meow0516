@@ -16,7 +16,8 @@ const UserInfoModule: Module<UserInfoModuleState, RootState> = {
     isLogin: true,
     userInfo: {
       username: 'TW no.1',
-      avatar: '../../assets/default-avatar_1.png',
+      avatar: new URL('../../assets/default-avatar_1.png', import.meta.url)
+        .href,
     },
   },
   mutations: {
