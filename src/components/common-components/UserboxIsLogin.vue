@@ -28,7 +28,9 @@
             label="發表文章"
           />
         </router-link>
-        <DropdownItem :icon="['far', 'user']" label="個人頁面" />
+        <router-link :to="{ name: 'Profile' }">
+          <DropdownItem :icon="['far', 'user']" label="個人頁面" />
+        </router-link>
         <DropdownItem :icon="['far', 'bookmark']" label="我的收藏" />
         <DropdownItem :icon="['far', 'clock']" label="瀏覽紀錄" />
         <DropdownItem icon="gear" label="帳號設定" />
