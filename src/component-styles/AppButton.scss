@@ -22,4 +22,17 @@
     border-width: 1px;
     border-color: theme('colors.primary.100');
   }
+  .btn-secondary-light {
+    background-color: #fff;
+    color: theme('colors.secondary.500');
+    border-width: 1px;
+    border-color: theme('colors.secondary.500');
+  }
+  .btn-secondary-dark {
+    background-color: theme('colors.secondary.500');
+    color: #fff;
+    &.active {
+      font-weight: 700;
+    }
+  }
 }

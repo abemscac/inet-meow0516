@@ -10,6 +10,7 @@ import {
   faHeart as faHeartSolid,
   faArrowUpFromBracket,
   faImage,
+  faKey,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -20,6 +21,8 @@ import {
   faHeart,
   faEye,
   faPaperPlane,
+  faTrashCan,
+  faIdBadge,
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
@@ -38,7 +41,10 @@ library.add(
   faHeart,
   faPaperPlane,
   faArrowUpFromBracket,
-  faImage
+  faImage,
+  faTrashCan,
+  faIdBadge,
+  faKey
 );
 
 export default FontAwesomeIcon;
