@@ -7,6 +7,7 @@
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
           :class="isError ? 'border-indicator-danger' : ''"
           placeholder="舊密碼*"
+          :pattern="passwordRegExp.source"
           required
         />
         <p v-if="isError" class="text-left text-xs px-1 text-indicator-danger">
@@ -19,6 +20,7 @@
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
           :class="isError ? 'border-indicator-danger' : ''"
           placeholder="新密碼*"
+          :pattern="passwordRegExp.source"
           required
         />
         <p v-if="isError" class="text-left text-xs px-1 text-indicator-danger">
@@ -35,6 +37,7 @@
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
           :class="isError ? 'border-indicator-danger' : ''"
           placeholder="確認新密碼*"
+          :pattern="passwordRegExp.source"
           required
         />
         <p v-if="isError" class="text-left text-xs px-1 text-indicator-danger">
@@ -49,6 +52,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
+import { passwordRegExp } from '../../constants/regexp.const';
 
 export type Article = {
   category: string;
