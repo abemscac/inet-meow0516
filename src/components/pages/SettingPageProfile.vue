@@ -7,6 +7,7 @@
           type="text"
           class="w-full py-1 outline-0"
           :class="isError ? 'border-indicator-danger' : ''"
+          :pattern="usernameRegExp.source"
           required
         />
         <p v-if="isError" class="text-left text-xs px-1 text-indicator-danger">
@@ -36,6 +37,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
+import { usernameRegExp } from '../../constants/regexp.const';
 
 export type Article = {
   category: string;
