@@ -33,7 +33,9 @@
         </router-link>
         <DropdownItem :icon="['far', 'bookmark']" label="我的收藏" />
         <DropdownItem :icon="['far', 'clock']" label="瀏覽紀錄" />
-        <DropdownItem icon="gear" label="帳號設定" />
+        <router-link :to="{ name: 'Setting' }">
+          <DropdownItem icon="gear" label="帳號設定" />
+        </router-link>
         <DropdownItem
           icon="arrow-right-from-bracket"
           label="登出"
