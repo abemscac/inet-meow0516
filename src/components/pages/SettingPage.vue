@@ -1,67 +1,59 @@
 <template>
-  <div class="w-1/3 md:w-full flex flex-col m-auto relative py-10">
+  <div class="w-1/3 md:w-full flex flex-col m-auto relative py-10 max-w-md">
     <h2 class="font-bold text-4xl text-left px-2 md:px-4">帳號設定</h2>
     <div
       class="w-full flex justify-start p-2 md:px-4 mt-4 sm:sticky sm:top-0 sm:bg-white"
     >
-      <AppButton
-        v-for="option in editTypeOptions"
-        :key="option.label"
-        :label="option.label"
-        class="px-3 mr-3"
-        :class="
-          activeEditType === option.value
-            ? 'btn-secondary-dark active'
-            : 'btn-gray-light'
-        "
-        :icon="option.icon"
-        @click="setEditType(option.value)"
-      />
+      <router-link
+        v-for="subRoute in subRoutes"
+        :key="subRoute.name"
+        :to="{ name: subRoute.name }"
+      >
+        <AppButton
+          :label="subRoute.label"
+          class="px-3 mr-3"
+          :class="
+            route.name === subRoute.name
+              ? 'btn-secondary-dark active'
+              : 'btn-gray-light'
+          "
+          :icon="subRoute.icon"
+        />
+      </router-link>
     </div>
-    <div class="my-4 px-4 py-10 md:py-4 w-full bg-white">
-      <SettingPageAvatar v-if="activeEditType === 'avatar'" />
-      <SettingPageProfile v-if="activeEditType === 'profile'" />
-      <SettingPagePassword v-if="activeEditType === 'password'" />
+    <div class="mx-4 my-4 px-4 py-10 md:py-4 w-full bg-white">
+      <router-view />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 import AppButton from '../common-components/AppButton.vue';
-import SettingPageAvatar from './SettingPageAvatar.vue';
-import SettingPageProfile from './SettingPageProfile.vue';
-import SettingPagePassword from './SettingPagePassword.vue';
 
-export type Article = {
-  category: string;
-  title: string;
-  image?: File;
-  body: string;
+export type SubRoute = {
+  label: string;
+  name: string;
+  icon: string[];
 };
 
-export type EditType = 'avatar' | 'profile' | 'password';
+const route = useRoute();
 
-const activeEditType = ref('avatar');
-const editTypeOptions = [
+const subRoutes: SubRoute[] = [
   {
     label: '頭像',
-    value: 'avatar',
+    name: 'SettingAvatar',
     icon: ['far', 'id-badge'],
   },
   {
     label: '基本資料',
-    value: 'profile',
+    name: 'SettingProfile',
     icon: ['far', 'user'],
   },
   {
     label: '密碼',
-    value: 'password',
+    name: 'SettingPassword',
     icon: ['fa', 'key'],
   },
 ];
-
-const setEditType = (editType: string) => {
-  activeEditType.value = editType;
-};
 </script>

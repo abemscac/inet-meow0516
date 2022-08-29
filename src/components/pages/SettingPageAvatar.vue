@@ -25,14 +25,5 @@
 import AppButton from '../common-components/AppButton.vue';
 import { useStore } from '../../vuex/Store';
 
-export type Article = {
-  category: string;
-  title: string;
-  image?: File;
-  body: string;
-};
-
-export type EditType = 'avatar' | 'profile' | 'password';
-
 const store = useStore();
 </script>
