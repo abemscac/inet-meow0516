@@ -6,6 +6,9 @@ import EditArticle from '../components/pages/EditArticle.vue';
 import SearchPage from '../components/pages/SearchPage.vue';
 import ProfilePage from '../components/pages/ProfilePage.vue';
 import SettingPage from '../components/pages/SettingPage.vue';
+import SettingPageAvatar from '../components/pages/SettingPageAvatar.vue';
+import SettingPageProfile from '../components/pages/SettingPageProfile.vue';
+import SettingPagePassword from '../components/pages/SettingPagePassword.vue';
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -42,6 +45,24 @@ const routes: VueRouter.RouteRecordRaw[] = [
     name: 'Setting',
     path: '/setting',
     component: SettingPage,
+    redirect: '/setting/avatar',
+    children: [
+      {
+        name: 'SettingAvatar',
+        path: '/setting/avatar',
+        component: SettingPageAvatar,
+      },
+      {
+        name: 'SettingProfile',
+        path: '/setting/profile',
+        component: SettingPageProfile,
+      },
+      {
+        name: 'SettingPassword',
+        path: '/setting/password',
+        component: SettingPagePassword,
+      },
+    ],
   },
 ];
 

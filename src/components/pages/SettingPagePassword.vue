@@ -5,7 +5,7 @@
         <input
           type="password"
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
-          :class="isError ? 'border-indicator-danger' : ''"
+          :class="{ 'border-indicator-danger': isError }"
           placeholder="舊密碼*"
           :pattern="passwordRegExp.source"
           required
@@ -18,7 +18,7 @@
         <input
           type="password"
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
-          :class="isError ? 'border-indicator-danger' : ''"
+          :class="{ 'border-indicator-danger': isError }"
           placeholder="新密碼*"
           :pattern="passwordRegExp.source"
           required
@@ -35,7 +35,7 @@
         <input
           type="password"
           class="w-full border border-primary-200 rounded-lg p-2 mb-1"
-          :class="isError ? 'border-indicator-danger' : ''"
+          :class="{ 'border-indicator-danger': isError }"
           placeholder="確認新密碼*"
           :pattern="passwordRegExp.source"
           required
@@ -53,15 +53,6 @@
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
 import { passwordRegExp } from '../../constants/regexp.const';
-
-export type Article = {
-  category: string;
-  title: string;
-  image?: File;
-  body: string;
-};
-
-export type EditType = 'avatar' | 'profile' | 'password';
 
 const isError = ref(false);
 </script>

@@ -6,7 +6,7 @@
         <input
           type="text"
           class="w-full py-1 outline-0"
-          :class="isError ? 'border-indicator-danger' : ''"
+          :class="{ 'border-indicator-danger': isError }"
           :pattern="usernameRegExp.source"
           required
         />
@@ -23,7 +23,7 @@
         <input
           type="text"
           class="w-full py-1 outline-0"
-          :class="isError ? 'border-indicator-danger' : ''"
+          :class="{ 'border-indicator-danger': isError }"
         />
         <p v-if="isError" class="text-left text-xs px-1 text-indicator-danger">
           Error message(TBD)
@@ -38,15 +38,6 @@
 import { ref } from 'vue';
 import AppButton from '../common-components/AppButton.vue';
 import { usernameRegExp } from '../../constants/regexp.const';
-
-export type Article = {
-  category: string;
-  title: string;
-  image?: File;
-  body: string;
-};
-
-export type EditType = 'avatar' | 'profile' | 'password';
 
 const isError = ref(false);
 </script>
