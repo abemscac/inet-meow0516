@@ -31,7 +31,9 @@
         <router-link :to="{ name: 'Profile' }">
           <DropdownItem :icon="['far', 'user']" label="個人頁面" />
         </router-link>
-        <DropdownItem :icon="['far', 'bookmark']" label="我的收藏" />
+        <router-link :to="{ name: 'Collection' }">
+          <DropdownItem :icon="['far', 'bookmark']" label="我的收藏" />
+        </router-link>
         <DropdownItem :icon="['far', 'clock']" label="瀏覽紀錄" />
         <router-link :to="{ name: 'Setting' }">
           <DropdownItem icon="gear" label="帳號設定" />

@@ -9,6 +9,7 @@ import SettingPage from '../components/pages/SettingPage.vue';
 import SettingPageAvatar from '../components/pages/SettingPageAvatar.vue';
 import SettingPageProfile from '../components/pages/SettingPageProfile.vue';
 import SettingPagePassword from '../components/pages/SettingPagePassword.vue';
+import CollectionPage from '../components/pages/CollectionPage.vue';
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -63,6 +64,11 @@ const routes: VueRouter.RouteRecordRaw[] = [
         component: SettingPagePassword,
       },
     ],
+  },
+  {
+    name: 'Collection',
+    path: '/collection',
+    component: CollectionPage,
   },
 ];
 

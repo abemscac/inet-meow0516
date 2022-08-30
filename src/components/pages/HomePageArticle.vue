@@ -1,5 +1,5 @@
 <template>
-  <article class="flex mt-5">
+  <article class="flex mt-5" :class="isRemoving ? ' opacity-60' : ''">
     <router-link class="shrink-0" :to="articleLink">
       <img
         :src="article.coverImageUrl"
@@ -70,7 +70,10 @@
             {{ article.title }}
           </span>
         </p>
-        <p class="line-clamp-2 sm:max-w-[300px] text-xs text-gray-400">
+        <p
+          class="sm:max-w-[300px] text-xs text-gray-400"
+          :class="route.name !== 'Collection' ? 'line-clamp-2' : 'line-clamp-1'"
+        >
           <Highlighter
             v-if="route.name === 'Search'"
             class="my-highlight"
@@ -84,24 +87,35 @@
           </span>
         </p>
       </router-link>
-      <div class="flex justify-start gap-x-4 text-xs">
-        <div class="flex gap-x-1">
-          <font-awesome-icon :icon="['far', 'eye']" />
-          <p>{{ article.views }}</p>
+      <div class="flex justify-between items-center text-xs">
+        <div class="flex gap-x-4">
+          <div class="flex gap-x-1">
+            <font-awesome-icon :icon="['far', 'eye']" />
+            <p>{{ article.views }}</p>
+          </div>
+          <div class="flex gap-x-1">
+            <button>
+              <font-awesome-icon :icon="['far', 'heart']" @click="like" />
+            </button>
+            <p>{{ article.likes }}</p>
+          </div>
         </div>
-        <div class="flex gap-x-1">
-          <button>
-            <font-awesome-icon :icon="['far', 'heart']" @click="like" />
-          </button>
-          <p>{{ article.likes }}</p>
-        </div>
+        <button v-if="route.name === 'Collection'">
+          <font-awesome-icon
+            :icon="
+              !isRemoving ? ['far', 'trash-can'] : ['fa', 'arrow-rotate-right']
+            "
+            class="border border-secondary-500 p-2 rounded-full text-secondary-500"
+            @click="handelRemoveClick"
+          />
+        </button>
       </div>
     </div>
   </article>
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, ref } from 'vue';
 import { useRoute, RouteLocationRaw } from 'vue-router';
 import Highlighter from 'vue-highlight-words';
 import { Article } from '../../mock/mockArticle';
@@ -132,6 +146,15 @@ const articleLink = computed<RouteLocationRaw>(() => ({
 
 const like = () => {
   console.log('like this article');
+};
+
+const isRemoving = ref(false);
+
+const handelRemoveClick = () => {
+  isRemoving.value = true;
+  setTimeout(() => {
+    isRemoving.value = false;
+  }, 2000);
 };
 </script>
 

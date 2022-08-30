@@ -11,6 +11,7 @@ import {
   faArrowUpFromBracket,
   faImage,
   faKey,
+  faArrowRightRotate,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -44,7 +45,8 @@ library.add(
   faImage,
   faTrashCan,
   faIdBadge,
-  faKey
+  faKey,
+  faArrowRightRotate
 );
 
 export default FontAwesomeIcon;
